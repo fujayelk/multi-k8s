@@ -14,16 +14,16 @@
           - run: docker run -e CI=true fujayelk/client-test npm test
 
           - name: Build production docker images
-            run: docker build -t fujayelk/multi-client -f Dockerfile.dev ./client
-            run: docker build -t fujayelk/multi-nginx -f Dockerfile.dev ./nginx
-            run: docker build -t fujayelk/multi-server -f Dockerfile.dev ./server
-            run: docker build -t fujayelk/multi-worker -f Dockerfile.dev ./worker
+          - run: docker build -t fujayelk/multi-client -f Dockerfile.dev ./client
+          - run: docker build -t fujayelk/multi-nginx -f Dockerfile.dev ./nginx
+          - run: docker build -t fujayelk/multi-server -f Dockerfile.dev ./server
+          - run: docker build -t fujayelk/multi-worker -f Dockerfile.dev ./worker
 
           - name: Push images to docker hub
-            run: docker push fujayelk/multi-client
-            run: docker push fujayelk/multi-nginx
-            run: docker push fujayelk/multi-server
-            run: docker push fujayelk/multi-worker
+          - run: docker push fujayelk/multi-client
+          - run: docker push fujayelk/multi-nginx
+          - run: docker push fujayelk/multi-server
+          - run: docker push fujayelk/multi-worker
      
 #          - name: Generate deployment package
 #            run: zip -r deploy.zip . -x '*.git*'
