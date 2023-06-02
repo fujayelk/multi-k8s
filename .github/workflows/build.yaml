@@ -13,10 +13,10 @@
           - run: docker build -t fujayelk/client-test -f ./client/Dockerfile.dev ./client
           - run: docker run -e CI=true fujayelk/client-test npm test
 
-          - run: docker build -t fujayelk/multi-client -f ./client/Dockerfile.dev ./client
-          - run: docker build -t fujayelk/multi-nginx -f ./client/Dockerfile.dev ./nginx
-          - run: docker build -t fujayelk/multi-server -f ./client/Dockerfile.dev ./server
-          - run: docker build -t fujayelk/multi-worker -f ./client/Dockerfile.dev ./worker
+          - run: docker build -t fujayelk/multi-client ./client
+          - run: docker build -t fujayelk/multi-nginx ./nginx
+          - run: docker build -t fujayelk/multi-server ./server
+          - run: docker build -t fujayelk/multi-worker ./worker
 
           - run: docker push fujayelk/multi-client
           - run: docker push fujayelk/multi-nginx
