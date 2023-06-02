@@ -10,13 +10,13 @@
         steps:
           - uses: actions/checkout@v3
           - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          - run: docker build -t fujayelk/client-test -f Dockerfile.dev ./client
+          - run: docker build -t fujayelk/client-test -f ./client/Dockerfile.dev ./client
           - run: docker run -e CI=true fujayelk/client-test npm test
 
-          - run: docker build -t fujayelk/multi-client -f Dockerfile.dev ./client
-          - run: docker build -t fujayelk/multi-nginx -f Dockerfile.dev ./nginx
-          - run: docker build -t fujayelk/multi-server -f Dockerfile.dev ./server
-          - run: docker build -t fujayelk/multi-worker -f Dockerfile.dev ./worker
+          - run: docker build -t fujayelk/multi-client -f ./client/Dockerfile.dev ./client
+          - run: docker build -t fujayelk/multi-nginx -f ./client/Dockerfile.dev ./nginx
+          - run: docker build -t fujayelk/multi-server -f ./client/Dockerfile.dev ./server
+          - run: docker build -t fujayelk/multi-worker -f ./client/Dockerfile.dev ./worker
 
           - run: docker push fujayelk/multi-client
           - run: docker push fujayelk/multi-nginx
